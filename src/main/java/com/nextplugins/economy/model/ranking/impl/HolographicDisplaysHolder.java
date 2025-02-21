@@ -1,9 +1,9 @@
 package com.nextplugins.economy.model.ranking.impl;
 
-import com.gmail.filoghost.holographicdisplays.api.Hologram;
-import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import com.nextplugins.economy.NextEconomy;
 import com.nextplugins.economy.model.ranking.IHologramHolder;
+import me.filoghost.holographicdisplays.api.HolographicDisplaysAPI;
+import me.filoghost.holographicdisplays.api.hologram.Hologram;
 import org.bukkit.Location;
 
 import java.util.List;
@@ -15,13 +15,13 @@ public class HolographicDisplaysHolder implements IHologramHolder {
 
     @Override
     public void destroyHolograms(List<String> holograms) {
-        HologramsAPI.getHolograms(NextEconomy.getInstance()).forEach(Hologram::delete);
+        HolographicDisplaysAPI.get(NextEconomy.getInstance()).getHolograms().forEach(Hologram::delete);
     }
 
     @Override
     public String createHologram(Location location, List<String> lines) {
-        Hologram hologram = HologramsAPI.createHologram(NextEconomy.getInstance(), location);
-        lines.forEach(hologram::appendTextLine);
+        Hologram hologram = HolographicDisplaysAPI.get(NextEconomy.getInstance()).createHologram(location);
+        lines.forEach(line -> hologram.getLines().appendText(line));
 
         return "NextEconomy";
     }

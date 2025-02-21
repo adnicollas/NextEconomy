@@ -1,7 +1,5 @@
 package com.nextplugins.economy.command.bukkit;
 
-import com.gmail.filoghost.holographicdisplays.api.Hologram;
-import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import com.google.common.base.Stopwatch;
 import com.henryfabio.sqlprovider.executor.SQLExecutor;
 import com.nextplugins.economy.NextEconomy;
@@ -19,6 +17,8 @@ import com.nextplugins.economy.util.ColorUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import lombok.var;
+import me.filoghost.holographicdisplays.api.HolographicDisplaysAPI;
+import me.filoghost.holographicdisplays.api.hologram.Hologram;
 import me.saiintbrisson.minecraft.command.annotation.Command;
 import me.saiintbrisson.minecraft.command.annotation.Optional;
 import me.saiintbrisson.minecraft.command.command.Context;
@@ -118,7 +118,7 @@ public final class NextEconomyCommand {
             }
         }
 
-        HologramsAPI.getHolograms(NextEconomy.getInstance()).forEach(Hologram::delete);
+        HolographicDisplaysAPI.get(NextEconomy.getInstance()).getHolograms().forEach(Hologram::delete);
         val runnable = CustomRankingRegistry.getInstance().getRunnable();
         if (runnable instanceof NPCRunnable) {
             val npcRunnable = (NPCRunnable) runnable;
