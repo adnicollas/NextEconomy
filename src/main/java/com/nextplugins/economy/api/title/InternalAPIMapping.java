@@ -8,7 +8,10 @@ import lombok.val;
 public enum InternalAPIMapping {
 
     REFLECTION(ReflectionTitleAPI.class, MinecraftVersion.v1_12),
-    BUKKIT(BukkitTitleAPI.class, MinecraftVersion.v1_18);
+    BUKKIT(BukkitTitleAPI.class, MinecraftVersion.v1_18),
+    V1_19(ReflectionTitleAPI.class, MinecraftVersion.v1_19),
+    V1_20(BukkitTitleAPI.class, MinecraftVersion.v1_20),
+    V1_21(ReflectionTitleAPI.class, MinecraftVersion.v1_21);
 
     private final Class<? extends InternalTitleAPI> apiClass;
     private final MinecraftVersion maxVersion;
