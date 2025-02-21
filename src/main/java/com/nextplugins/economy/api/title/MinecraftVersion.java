@@ -17,29 +17,37 @@ enum MinecraftVersion {
     v1_15("1_15"),
     v1_16("1_16"),
     v1_17("1_17"),
-    v1_18("1_18");
+    v1_18("1_18"),
+    v1_19("1_19"),
+    v1_20("1_20"),
+    v1_21("1_21");
 
     private final String key;
-
-    public boolean isGreaterThanOrEqualTo(MinecraftVersion other) {
-        return ordinal() >= other.ordinal();
-    }
 
     public boolean isLessThanOrEqualTo(MinecraftVersion other) {
         return ordinal() <= other.ordinal();
     }
 
-    private static final String VERSION = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+    private static final String VERSION = getServerVersion();
     private static final MinecraftVersion MINECRAFT_VERSION = MinecraftVersion.build();
+
+    private static String getServerVersion() {
+        String packageName = Bukkit.getServer().getClass().getPackage().getName();
+        String[] parts = packageName.split("\\.");
+        if (parts.length > 3) {
+            return parts[3];
+        }
+        return "unknown";
+    }
 
     private static MinecraftVersion build() {
         for (val version : MinecraftVersion.values()) {
-            if (MinecraftVersion.VERSION.contains(version.key)) {
+            if (VERSION.contains(version.key)) {
                 return version;
             }
         }
 
-        return v1_18; // Just return latest for unknown
+        return v1_21;
     }
 
     public static MinecraftVersion get() {
