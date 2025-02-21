@@ -30,7 +30,6 @@ import com.nextplugins.economy.ranking.storage.RankingStorage;
 import com.nextplugins.economy.ranking.util.RankingChatBody;
 import com.nextplugins.economy.vault.registry.VaultHookRegistry;
 import com.nextplugins.economy.views.registry.InventoryRegistry;
-import com.yuhtin.updatechecker.UpdateChecker;
 import lombok.Getter;
 import lombok.val;
 import org.bukkit.Bukkit;
@@ -71,7 +70,6 @@ public final class NextEconomy extends JavaPlugin {
     private InteractionRegistry interactionRegistry;
     private DiscordCommandRegistry discordCommandRegistry;
 
-    private UpdateChecker updateChecker;
     private RankingChatBody rankingChatBody;
 
     private File npcFile;
@@ -84,8 +82,6 @@ public final class NextEconomy extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        updateChecker = new UpdateChecker(this, "NextPlugins");
-        updateChecker.check();
 
         npcFile = new File(getDataFolder(), "npcs.yml");
         if (!npcFile.exists()) saveResource("npcs.yml", false);
@@ -108,18 +104,6 @@ public final class NextEconomy extends JavaPlugin {
         getLogger().info("Iniciando carregamento do plugin.");
 
         val loadTime = Stopwatch.createStarted();
-        if (updateChecker.canUpdate()) {
-            val lastRelease = updateChecker.getLastRelease();
-
-            getLogger().info("");
-            getLogger().info("[NextUpdate] ATENÇÃO!");
-            getLogger().info("[NextUpdate] Você está usando uma versão antiga do NextEconomy!");
-            getLogger().info("[NextUpdate] Nova versão: " + lastRelease.getVersion());
-            getLogger().info("[NextUpdate] Baixe aqui: " + lastRelease.getDownloadURL());
-            getLogger().info("");
-        } else {
-            getLogger().info("[NextUpdate] Você está usando a ultima versão: " + updateChecker.getCurrentVersion());
-        }
 
         sqlConnector = SQLProvider.of(this).setup(null);
         sqlExecutor = new SQLExecutor(sqlConnector);
