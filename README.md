@@ -45,7 +45,7 @@ plugin [aqui](https://gamersboard.com.br/topic/75000-nexteconomy-o-mais-completo
 
 ## Download
 
-Você pode encontrar o plugin pronto para baixar [**aqui**](https://github.com/NextPlugins/NextEconomy/releases), ou se
+Você pode encontrar o plugin pronto para baixar [**aqui**](https://github.com/adnicollas/NextEconomy/releases), ou se
 você quiser, pode optar por clonar o repositório e dar build no plugin com suas alterações.
 
 ## Configuração
