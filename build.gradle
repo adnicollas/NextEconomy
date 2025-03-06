@@ -17,10 +17,10 @@ repositories {
     maven { url = 'https://oss.sonatype.org/content/groups/public/' }
 
     // libs
-    maven { url = 'https://repo.codemc.io/repository/maven-public/' }
     maven { url = 'https://jitpack.io/' }
-    maven { url = 'https://repo.nickuc.com/maven-releases/' }
     maven { url = 'https://nexus.scarsz.me/content/groups/public/' }
+    maven { url = 'https://repo.codemc.io/repository/maven-public/' }
+    maven { url = 'https://repo.nickuc.com/maven-releases/' }
 }
 
 dependencies {
@@ -28,7 +28,7 @@ dependencies {
 
     compileOnly 'com.github.PlaceholderAPI:PlaceholderAPI:2.11.6'
     compileOnly 'me.filoghost.holographicdisplays:holographicdisplays-api:3.0.0'
-    compileOnly 'com.github.decentsoftware-eu:decentholograms:2.8.14'
+    compileOnly 'com.github.decentsoftware-eu:decentholograms:2.8.15'
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7.1'
     compileOnly 'com.nickuc.chat:nchat-api:5.6'
     compileOnly fileTree('libs')
