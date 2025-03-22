@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.nextplugins'
-version = '2.2.1'
+version = '2.2.2'
 
 repositories {
     mavenCentral()
@@ -82,6 +82,7 @@ tasks.named('shadowJar', ShadowJar) {
     relocate 'com.yuhtin.updatechecker', 'com.nextplugins.economy.libs.updatechecker'
 
     relocate 'com.henryfabio.minecraft.configinjector', 'com.nextplugins.economy.libs.configinjector'
+    relocate 'com.henryfabio.minecraft.inventoryapi', 'com.nextplugins.economy.libs.inventoryapi'
 
     relocate 'com.henryfabio.sqlprovider', 'com.nextplugins.economy.libs.sqlprovider'
     relocate 'com.zaxxer.hikari', 'com.nextplugins.economy.libs.hikari'
